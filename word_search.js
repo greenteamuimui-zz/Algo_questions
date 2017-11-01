@@ -24,3 +24,32 @@ let board = [
   ['S','F','C','S'],
   ['A','D','E','E']
 ];
+
+// console.log(iterate(board,'BFDA'));
+
+function findWord(matrix, word){
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === word[0] && check(matrix, i, j, word, 0)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+}
+
+function check(matrix, i, j, word, count){
+  if (word.length === count) return true;
+  let result;
+  if(i >= 0 && j >= 0 && i < matrix.length && j < matrix[i].length && matrix[i][j] === word[count]){
+    result = check(matrix, i-1, j, word, count+1) || check(matrix, i, j-1, word, count+1) ||
+    check(matrix, i, j+1, word, count+1) ||
+    check(matrix, i+1, j, word, count+1);
+  } else {
+    return false;
+  }
+  return result;
+}
+
+console.log(findWord(board,'BFB'));
