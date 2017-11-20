@@ -25,7 +25,7 @@ let board = [
   ['A','D','E','E']
 ];
 
-// console.log(iterate(board,'BFDA'));
+console.log(iterate(board,'ABCCFB'));
 
 function findWord(matrix, word){
   for (var i = 0; i < matrix.length; i++) {
@@ -43,13 +43,16 @@ function check(matrix, i, j, word, count){
   if (word.length === count) return true;
   let result;
   if(i >= 0 && j >= 0 && i < matrix.length && j < matrix[i].length && matrix[i][j] === word[count]){
+    let temp = matrix[i][j];
+    matrix[i][j] = '';
     result = check(matrix, i-1, j, word, count+1) || check(matrix, i, j-1, word, count+1) ||
     check(matrix, i, j+1, word, count+1) ||
     check(matrix, i+1, j, word, count+1);
+    matrix[i][j] = temp;
   } else {
     return false;
   }
   return result;
 }
 
-console.log(findWord(board,'BFB'));
+console.log(findWord(board,'ABCCFB'));

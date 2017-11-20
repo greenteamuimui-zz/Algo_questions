@@ -42,3 +42,16 @@ var inorderTraversal = function(root) {
   }
   return ans;
 };
+
+var postorderTraversal = function(root) {
+    return postorderTraversal_helper(root, []);
+};
+
+var postorderTraversal_helper = function(root,ans) {
+    if (root) {
+        postorderTraversal_helper(root.left, ans);
+        postorderTraversal_helper(root.right, ans);
+        ans.push(root.val);
+    }
+    return ans;
+};

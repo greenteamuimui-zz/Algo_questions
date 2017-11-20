@@ -16,3 +16,4 @@ var countSubstrings = function(s) {
 
 // countSubstrings("abc") 3 "a","b","c"
 // countSubstrings("aaa") 6 "a',"a","a", "aa","aa","aaa"
+console.log(countSubstrings("abccba"));
